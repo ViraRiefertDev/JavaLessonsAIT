@@ -108,7 +108,6 @@ public class GuessTheNumber {
             isFirst = true;
             do {
                 if (isFirst) {
-
                     System.out.println("Хотите сыграть еще раз? y/n");
                     isFirst=false;
 
