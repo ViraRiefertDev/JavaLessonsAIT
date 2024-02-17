@@ -1,18 +1,0 @@
-
-˜
-java:S1192"Define a constant instead of duplicating this literal "----------------------------------------------------------------" 3 times.(Á”¦ô
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ƒ³Ø°ûÿÿÿÿ
-d
-java:S3973"IUse indentation to denote the code conditionally executed by this "else".(„¶áìøÿÿÿÿ
-:
-java:S1659"Declare "b" on a separate line.(ÅÿöÔüÿÿÿÿ
-T
-java:S1659">Declare "y" and all following declarations on a separate line.(žùè‡
-]
-java:S1126"BReplace this if-then-else statement by a single method invocation.(Îù†²þÿÿÿÿ
-]
-java:S1126$"BReplace this if-then-else statement by a single method invocation.(Ú”Ì¶þÿÿÿÿ
-X
-java:S11265"BReplace this if-then-else statement by a single method invocation.(ú›È”
-B
-java:S1481:",Remove this unused "isCheck" local variable.(óŒ–é

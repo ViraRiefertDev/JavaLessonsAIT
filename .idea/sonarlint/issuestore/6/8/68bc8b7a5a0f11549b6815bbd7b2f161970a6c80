@@ -1,7 +1,0 @@
-
-n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ñàöÄüÿÿÿÿ8¬éá‘Ø1
-d
-java:S2184"BCast one of the operands of this addition operation to a "double".(†‡—–ÿÿÿÿÿ8¬éá‘Ø1
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(±àŠ`8­éá‘Ø1
-d
-java:S1659"BDeclare "month" and all following declarations on a separate line.(”š•ïûÿÿÿÿ8²éá‘Ø1
