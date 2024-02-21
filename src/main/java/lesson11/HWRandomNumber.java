@@ -15,7 +15,8 @@ public class HWRandomNumber {
                     + maxAttempts + " попыток.");
             while (true){
                 System.out.println("Введите Вашу предположение (1-100)");
-                while (!scanner.hasNextInt()){ //hasNaxtInt блокирует scanner.next(); если мы ввели ?не? правильное значение
+                //hasNaxtInt блокирует scanner.next(); если мы ввели ?не? правильное значение
+                while (!scanner.hasNextInt()){
                     System.out.println("Ошибка, введите число");
                     scanner.next();
                 }
