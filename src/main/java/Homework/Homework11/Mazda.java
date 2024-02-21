@@ -1,7 +1,7 @@
 package Homework.Homework11;
 
 public class Mazda {
-    private String country = "Немецкая марка автомобиля";
+    private String country = "Японская марка автомобиля";
 
     public void MoreInfo(int year){
         switch (year){
