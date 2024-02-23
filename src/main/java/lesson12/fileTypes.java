@@ -1,6 +1,6 @@
 package lesson12;
 import java.util.Scanner;
-public class Task01 {
+public class fileTypes {
     public static void main(String[] args) {
         /*
         Напишите программу, которая принимает на вход расширение файла

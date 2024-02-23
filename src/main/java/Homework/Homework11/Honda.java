@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class Honda {
 
-    private String country = "Японская марка автомобиля";
+    private static String country = "Японская марка автомобиля";
 
-    public void MoreInfo(int year){
+    public static void MoreInfo(int year){
         switch (year){
             case 2024:
                 System.out.println("Популярные модели:\nHonda e:NP1\nHonda e:NS1\nHonda Vezel\nHonda ZR-V\nС акцентом на электроавтомобили");
@@ -26,7 +26,7 @@ public class Honda {
 
 
 
-    public String getCountry() {
+    public static String getCountry() {
         return country;
     }
 }

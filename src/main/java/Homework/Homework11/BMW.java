@@ -1,9 +1,9 @@
 package Homework.Homework11;
 
 public class BMW {
-    private String country = "Немецкая марка автомобиля";
+    private static String country = "Немецкая марка автомобиля";
 
-    public void MoreInfo(int year){
+    public static void MoreInfo(int year){
         switch (year){
             case 2024:
                 System.out.println("Популярные модели:\nBMW X2\nBMW 4er/I4 LCI\nBMW M5 und M5 Touring");
@@ -23,7 +23,7 @@ public class BMW {
 
 
 
-    public String getCountry() {
+    public static String getCountry() {
         return country;
     }
 }

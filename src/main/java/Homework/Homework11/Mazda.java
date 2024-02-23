@@ -1,9 +1,9 @@
 package Homework.Homework11;
 
 public class Mazda {
-    private String country = "Японская марка автомобиля";
+    private static String country = "Японская марка автомобиля";
 
-    public void MoreInfo(int year){
+    public static void MoreInfo(int year){
         switch (year){
             case 2024:
                 System.out.println("Популярные модели:\nSedan Mazda 3\nhatchback Mazda 3\nMazda CX-30");
@@ -23,7 +23,7 @@ public class Mazda {
 
 
 
-    public String getCountry() {
+    public static String getCountry() {
         return country;
     }
 }

@@ -2,7 +2,7 @@ package lesson12;
 
 import java.util.Scanner;
 
-public class Task02 {
+public class PracticeMethods {
     /*
     Создайте метод 'isEven', который принимает один целочисленный аргумент
     и возвращает 'boolean' значение, которое указывает, является ли число четным.
