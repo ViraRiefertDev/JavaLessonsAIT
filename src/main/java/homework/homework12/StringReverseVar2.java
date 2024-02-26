@@ -1,23 +1,15 @@
 package homework.homework12;
 import java.util.Scanner;
 public class StringReverseVar2 {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите слово: ");
         String word = scanner.next();
-        int i = 0, j = word.length() - 1;
-        while(i < j)
-        {
-            if(word.charAt(i) != word.charAt(j))
-            {
-                System.out.println("Not palindrome ");
-                System.exit(0);
-
-            }
-            i++;
-            j--;
+        String reverseWord = new StringBuilder(word).reverse().toString();
+        if(word.equals(reverseWord)){
+            System.out.println("Is palindrome"); // print "yes"
+        }else{
+            System.out.println("Not a palindrome");  // print "false"
         }
-        System.out.println("Palindrome");
     }
 }
-
