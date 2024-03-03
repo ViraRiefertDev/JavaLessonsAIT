@@ -12,19 +12,19 @@ public class IsPalindromeRekusivMethod {
         System.out.println(isPalindrome(s) ? "YES":"NO");
     }
 
-    private static boolean isPalindrome(String s){
+    private static boolean isPalindrome(String word){
 
-        if(s.length()==1 || s.isEmpty()){
+        if(word.length()==1 || word.isEmpty()){
             //Если метод дошел до этого шага, значит во всех
             // предыдущих шагах буквы друг другу равнялись и мы смело можем сказать что это true
             return true;//base step
         }
         //Если первый и последний символ строки ==, то тогда мы продолжаем вызывать
         //наш палиндром(тоесть еще есть шанс, что это будет палиндром
-        if(s.charAt(0)==s.charAt(s.length()-1)){
+        if(word.charAt(0)==word.charAt(word.length()-1)){
             //первую и последнюю букву обрезаем и уменьшаем String с обеих строн убирая
             // по одной букве
-            return isPalindrome(s.substring(1,s.length()-1));//recursive step
+            return isPalindrome(word.substring(1,word.length()-1));//recursive step
         }
         return false;
     }
