@@ -7,9 +7,11 @@ public class Hobby {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String[] hobby = {"велосипед", "рисование", "программирование", "плаванье", "вязание", "рыбалка"};
+        String[] hobby = {"Велосипед", "Рисование", "Программирование", "Плаванье", "Вязание", "Рыбалка"};
         int[] ratings = {4,3,1,2,6,5};
 
+        //Преобразование массива к единому формату
+        arrayToLowerCase(hobby);
         //Задание 1
         printTask(1);
         print(hobby);
@@ -38,6 +40,11 @@ public class Hobby {
 
 
 
+    public static void arrayToLowerCase(String[] array){
+        for(int i =0;i<array.length;i++){
+            array[i] = array[i].toLowerCase();
+        }
+    }
     public static void printTask(int numberOfTask) {
         System.out.println("-------------------------------Задание " + numberOfTask + "----------------------------------");
     }
