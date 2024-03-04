@@ -22,6 +22,7 @@ public class Hobby {
         print(isHobby);
 
 
+
         //Задание 3
         printTask(3);
         String favHobby = favoriteHobby(hobby);
@@ -140,7 +141,7 @@ public class Hobby {
         for (int i = 0; i < array.length; i++) {
             System.out.println((i+1) + ") " + array[i]);
         }
-        print ("Введите номер любимого хобби из списка (1-6)");
+        print ("Введите номер любимого хобби из списка (1-" + array.length + ")");
         int numberOfHobby = selectionFromList(array.length);
         return array[numberOfHobby - 1];
 
