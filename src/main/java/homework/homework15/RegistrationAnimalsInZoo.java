@@ -13,7 +13,8 @@ public class RegistrationAnimalsInZoo {
         animalSounds[1] = "Рррррррр";
         animalSpacies[2] = "Обезьяна";
         animalSounds[2] = "Уааауауауа";
-        animalSpacies[3] = "Лошадь";animalSounds[3] = "Иго-го";
+        animalSpacies[3] = "Лошадь";
+        animalSounds[3] = "Иго-го";
         printAnimalSounds(animalSpacies,animalSounds);
         System.out.println("------------------------------------------------------------------------");
         System.out.println("Введите название животного!");
