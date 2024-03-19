@@ -17,6 +17,7 @@ public class RegistrationAnimalsInZoo {
         animalSounds[3] = "Иго-го";
         printAnimalSounds(animalSpacies,animalSounds);
         System.out.println("------------------------------------------------------------------------");
+        System.out.println("");
         System.out.println("Введите название животного!");
         String animal = scanner.next().trim().toLowerCase();
         findAnimalSound(animal,animalSpacies,animalSounds);

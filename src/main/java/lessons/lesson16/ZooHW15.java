@@ -6,7 +6,7 @@ public class ZooHW15 {
 
     public static void main(String[] args) {
         printAnimalSounds(animalSpecies, animalSounds);
-        findAnimalSound("Левz", animalSpecies, animalSounds);
+        findAnimalSound("Лев", animalSpecies, animalSounds);
     }
 
     public static void printAnimalSounds(String[] animals, String[] sounds) {
