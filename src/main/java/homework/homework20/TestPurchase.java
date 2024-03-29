@@ -1,11 +1,12 @@
 package homework.homework20;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TestPurchase {
     /*
     --------------------------------------------------------------------------------------------------------------------
-     1b. Создайте метод main для инициализации ArrayList с покупками и заполните его несколькими товарами.
+     1b. Создайте метод main для  инициализации ArrayList с покупками и заполните его несколькими товарами.
      */
     public static void main(String[] args) {
         Purchase obj01 = new Purchase("Milk",2.30);
@@ -22,6 +23,7 @@ public class TestPurchase {
          */
         Purchase.addProductInList(productList, "Apple", 2.30);
         Purchase.addProductInList(productList, "Banana", 1.30);
+        Purchase.addProductInList(productList, "Apple", 2.30);
         Purchase.addProductInList(productList, "Eggs", 1.18);
         Purchase.addProductInList(productList, "Chicken", 5.30);
 
@@ -42,11 +44,18 @@ public class TestPurchase {
         /*
          5b. Проверьте работу метода, удалив одну из покупок и выведя список покупок снова.
          */
-        Purchase.removeByName(productList, "Milk");
-        Purchase.removeByName(productList,"Eggs");
-        Purchase.removeByName(productList,"Ananas");
+//        Purchase.removeByName(productList, "Apple");
+//        Purchase.removeByName(productList,"Eggs");
+//        Purchase.removeByName(productList,"Ananas");
+//        Purchase.printArrayList(productList);
+//
+//        Purchase.removePurchaseByNameIterator(productList,obj01);
         Purchase.printArrayList(productList);
 
 
+
+
+
     }
+
 }

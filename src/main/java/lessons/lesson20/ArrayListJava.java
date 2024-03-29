@@ -33,6 +33,7 @@ public class ArrayListJava {
         while(iterator.hasNext()){
             String element = iterator.next();
             System.out.println(element);
+
             //Выкинет ошибку ConcurrentModificationException
             //Вы пытаетесь модфицировать элемент который находится в обработке
             //list.add("Test");
@@ -40,6 +41,7 @@ public class ArrayListJava {
             //list.remove(0);
             //В итераторе можно только модифицировать элементы
         }
+
 
         //Преобразование листа в массив
         String[] array = list.toArray(new String[0]);
