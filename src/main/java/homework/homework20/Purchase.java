@@ -1,6 +1,7 @@
 package homework.homework20;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 /*
@@ -24,6 +25,9 @@ public class Purchase {
         return price;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     @Override
     public String toString() {
@@ -75,10 +79,29 @@ public class Purchase {
         }
         return index;
     }
+    /*
+    --------------------------------------------------------------------------------------------------------------------
+    5a. Напишите метод для обновления цены товара по его названию.
+     */
+    public static void updatePriceByName(ArrayList<Purchase> list, String nameForUpdate, double newPrice){
+        boolean isFound = false;
+        System.out.println("-------------------------------------------------------------------------------------------");
+        for(Purchase object:list){
+            if(object.getItemName().equalsIgnoreCase(nameForUpdate)){
+                object.setPrice(newPrice);
+                isFound=true;
+                System.out.println("Цена товара " + object.getItemName() + " обновлена и равна " + object.getPrice()+ " Euro");
+            }
+        }
+        if(!isFound){
+            System.out.println("Товар с именем "+ nameForUpdate + " не найден!!!");
+        }
+    }
+
 
     /*
     --------------------------------------------------------------------------------------------------------------------
-    5a. Напишите метод для удаления покупки по её названию.
+    6a. Напишите метод для удаления покупки по её названию.
      */
     public static void removeByName(ArrayList<Purchase> list, String name) {
         int index = searchByName(list, name);

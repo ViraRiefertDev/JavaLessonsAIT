@@ -41,8 +41,17 @@ public class TestPurchase {
         Purchase.searchByName(productList,"Eggs");
         Purchase.searchByName(productList,"Ananas");
 
+         /*
+        ----------------------------------------------------------------------------------------------------------------
+         5b. Проверьте работу метода, обновив цену одного из товаров и выведя список покупок снова.
+         */
+        Purchase.updatePriceByName(productList,"Chicken", 17.3);
+        Purchase.updatePriceByName(productList,"Meat",23);
+        Purchase.printArrayList(productList);
+
+
         /*
-         5b. Проверьте работу метода, удалив одну из покупок и выведя список покупок снова.
+         6b. Проверьте работу метода, удалив одну из покупок и выведя список покупок снова.
          */
 //        Purchase.removeByName(productList, "Apple");
 //        Purchase.removeByName(productList,"Eggs");
