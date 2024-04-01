@@ -72,5 +72,6 @@ public class ArrayListJava {
         list.clear();
         System.out.println(list.size());
 
+
     }
 }

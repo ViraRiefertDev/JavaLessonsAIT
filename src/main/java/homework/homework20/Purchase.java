@@ -8,7 +8,7 @@ import java.util.Iterator;
 ------------------------------------------------------------------------------------------------------------------------
 1a. Создайте класс Purchase с полями itemName (название товара) и price (цена товара).
  */
-public class Purchase {
+public class Purchase implements Comparable<Purchase> {
     private String itemName;
     private double price;
 
@@ -148,10 +148,16 @@ public class Purchase {
             }
         }
     }
-//    @Override
-//    public  int compareTo(Purchase purchase){
-//        //return Double.compare(this.price,)
-//    }
+
+    //для сортировки объектов через интерфейс Collection надо написать метод, по какому
+    // параметру мы будем сравнивать элементы (на пример по цене)
+    // метод, который принимает в себя каждый элемент и сравнивает его с предыдущим
+
+    @Override
+    public int compareTo(Purchase purchase) {
+        //Бери предыдущий и сравнивай с тем который тебе передадут, и возвращай результат
+        return Double.compare(this.price, purchase.price);
+    }
 
 }
 

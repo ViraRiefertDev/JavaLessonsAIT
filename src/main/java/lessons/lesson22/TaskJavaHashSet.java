@@ -55,7 +55,7 @@ public class TaskJavaHashSet {
         System.out.println("difference " + difference);
 
         //проверка на подмножество. Является ли третий set3 подмножеством set4
-        HashSet<Integer> set3 = new HashSet<>(Arrays.asList(1, 2, 3, 6));
+        HashSet<Integer> set3 = new HashSet<>(Arrays.asList(1, 2, 3));
         HashSet<Integer> set4 = new HashSet<>(Arrays.asList(1,2,3,4, 5, 7,8));
         if(set4.containsAll(set3)){
             System.out.println("Set3 является подмножеством set4");

@@ -18,26 +18,27 @@ public class HashSetJava {
 
 
         //проверка по названию элемента на наличие элемента
-        if(hashSetCars.contains("Audi")){
+        if (hashSetCars.contains("Audi")) {
             System.out.println("Найден элемент");
 
         }
 
         //удаление элемента
+        //Удалять можно только по названию, по индексу нельзя
         hashSetCars.remove("VW");
 
         //Итерация по элементам
-        for(String car:hashSetCars){
+        for (String car : hashSetCars) {
             System.out.println(car);
         }
 
         //Выдает ошибку, на лету удалять элменты нельзя
-//        for(String car:hashSetCars){
-//            if(car.equalsIgnoreCase("Audi")){
-//            hashSetCars.remove("Audi");
-//        }
+//        for (String car : hashSetCars) {
+//            if (car.equalsIgnoreCase("Audi")) {
+//                hashSetCars.remove("Audi");
+//            }
 
-        //Удалять элементы можно через итератор
+            //Удалять элементы можно через итератор
         Iterator<String> iterator = hashSetCars.iterator();
         while(iterator.hasNext()){
             String car = iterator.next();
@@ -50,6 +51,7 @@ public class HashSetJava {
         for(String car:hashSetCars){
             System.out.println(car);
         }
+
 
 
     }

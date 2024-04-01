@@ -1,7 +1,9 @@
 package homework.homework20;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class TestPurchase {
     /*
@@ -13,6 +15,7 @@ public class TestPurchase {
         Purchase obj02 = new Purchase("Bread",1.23);
         Purchase obj03 = new Purchase("Butter", 2.80);
         ArrayList<Purchase> productList = new ArrayList<>();
+        ArrayList<Purchase> cloneList = new ArrayList<>();
         productList.add(obj01);
         productList.add(obj02);
         productList.add(obj03);
@@ -60,6 +63,30 @@ public class TestPurchase {
 //
 //        Purchase.removePurchaseByNameIterator(productList,obj01);
         Purchase.printArrayList(productList);
+
+        //1 вариант сортировки продвинутый
+        //Сортировка через Collections (надо еще прописать метод compareTo в Purchase и имплементировать Comparable)
+        //Collections.sort(productList);
+
+        //Purchase.printArrayList(productList);
+
+        //2 вариант сортировки используя comparator(сравниватель).
+        // с его помощью можно сортировать только числовые типы
+        // Создаем компаратор для сортировки элементов (покупок) по цене
+        //-> это лямбда. Слева метод, справа результат
+        Comparator<Purchase> preisComparator = Comparator.comparingDouble(purchase -> purchase.getPrice());
+        //Сортировка элементов
+        productList.sort(preisComparator);
+        Purchase.printArrayList(productList);
+
+        //Клонирование ArrayList
+        cloneList = (ArrayList<Purchase>) productList.clone();
+        Purchase.printArrayList(cloneList);
+
+
+
+
+
 
 
 
