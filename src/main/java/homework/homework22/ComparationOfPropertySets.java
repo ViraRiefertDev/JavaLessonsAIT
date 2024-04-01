@@ -15,6 +15,7 @@ public class ComparationOfPropertySets {
         Property.addProductInList(set1,"Willy-Brandt-Platz 3 · 50679 Köln", "Commercial real estate");
         Property.addProductInList(set1, "Schiller Straße 88 · 52064 Aachen", "Haus");
 
+
         //Формируем второй сэт
         Property.addProductInList(set2,"Kölner Landstraße 298 · 40589","Haus");
         Property.addProductInList(set2,"Giesendorfer Straße 22 · 50189 Elsdorf", "Apartment");

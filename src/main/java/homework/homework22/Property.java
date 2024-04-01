@@ -36,8 +36,12 @@ public class Property {
     //1.2 Реализовать hashCode и equals для обеспечения уникальности
     // объектов Property в HashSet на основе их адреса и типа.
     public static void printHashSet(HashSet<Property> list) {
+        if(!list.isEmpty())
         for (Property object : list) {
             System.out.println("Адрес: " + object.getAdress() + " Type: " + object.getType());
+        }
+        else{
+            System.out.println("Нет объектов для вывода, список пуст!");
         }
     }
 
@@ -78,9 +82,7 @@ public class Property {
     // и возвращает HashSet<Property>, содержащий только объекты недвижимости заданного типа.
     public static HashSet<Property> filterByType(HashSet<Property> list, String type) {
         HashSet<Property> filteredList = new HashSet<>();
-        if (!type.equalsIgnoreCase("Haus")  && !type.equalsIgnoreCase("Apartment") && !type.equalsIgnoreCase("Commercial real estate")){
-            System.out.println("No objects with such type in system!");
-        } else {
+        if (type.equalsIgnoreCase("Haus")  || type.equalsIgnoreCase("Apartment") || type.equalsIgnoreCase("Commercial real estate")){
             for (Property object : list) {
                 if (object.getType().equalsIgnoreCase(type)) {
                     filteredList.add(object);
@@ -103,4 +105,5 @@ public class Property {
         }
         return comparationSet;
     }
+
 }
