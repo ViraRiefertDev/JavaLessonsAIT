@@ -56,8 +56,12 @@ public class ClothingShop {
         //сортировака по размеру
         //clothingManager.sortedBySize();
 
+        //сортировака по категориям
+        clothingManager.sortedByCategory();
+
         //вывод всех уникальных категорий товаров
-        //clothingManager.allUniqueCategory();
+//        HashSet<String> categorySet = clothingManager.allUniqueCategory();
+//        clothingManager.printCategories(categorySet);
 
 
     }

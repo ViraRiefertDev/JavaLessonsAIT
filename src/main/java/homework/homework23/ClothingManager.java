@@ -33,7 +33,7 @@ public class ClothingManager {
         }
     }
 
-    private static void printCategories(HashSet<String> set){
+    public static void printCategories(HashSet<String> set){
         System.out.println("-------------------------------------");
         System.out.println("В нашем каталоге Вы можете найти следующие категории товаров: ");
         if (set.isEmpty()) {
@@ -255,15 +255,28 @@ public class ClothingManager {
         printArrayList(list);
     }
 
+    public void sortedByCategory(){
+        ArrayList<ClothingItem> list = new ArrayList<>();
+        System.out.println("Отсортированный список по категориям");
+        HashSet<String> categorySet = allUniqueCategory();
+        for(String category: categorySet){
+            for(ClothingItem item: manager){
+                if(item.getCategory().equalsIgnoreCase(category)){
+                    list.add(item);
+                }
+            }
+        }
+        printArrayList(list);
+    }
+
     //Дополнительное задание
     //Добавьте в ClothingManager метод для вывода всех уникальных категорий одежды, присутствующих в коллекции.
-    public void allUniqueCategory(){
+    public HashSet<String> allUniqueCategory(){
         HashSet<String> categorySet = new HashSet<>();
         for(ClothingItem item : manager){
             categorySet.add(item.getCategory());
         }
-        ClothingManager.printCategories(categorySet);
-
+        return categorySet;
     }
 
 
