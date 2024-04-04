@@ -89,6 +89,7 @@ public class ClothingManager {
             while (iterator.hasNext()) {
                 ClothingItem item = iterator.next();
                 if (item.getName().equalsIgnoreCase(name)) {
+                    iterator.remove();
                     System.out.println("Артикль " + item.getName() + " в категории " + item.getCategory() + "| Размера: " + item.getSize() + "| Цвета: " + item.getColor() + " был найден и успешно удален!");
                     isFound = true;
                 }
@@ -110,6 +111,7 @@ public class ClothingManager {
             while (iterator.hasNext()) {
                 ClothingItem item = iterator.next();
                 if (item.getName().equalsIgnoreCase(name) && item.getSize() == size) {
+                    iterator.remove();
                     System.out.println("Артикль " + item.getName() + " в категории " + item.getCategory() + "| Размера: " + item.getSize() + "| Цвета: " + item.getColor() + " был найден и успешно удален!");
                     isFound = true;
                 }
@@ -132,6 +134,7 @@ public class ClothingManager {
             while (iterator.hasNext()) {
                 ClothingItem item = iterator.next();
                 if (item.getName().equalsIgnoreCase(name) && item.getSize() == size && item.getColor().equalsIgnoreCase(color)) {
+                    iterator.remove();
                     System.out.println("Артикль " + item.getName() + " в категории " + item.getCategory() + "| Размера: " + item.getSize() + "| Цвета: " + item.getColor() + " был найден и успешно удален!");
                     isFound = true;
                 }
@@ -154,6 +157,7 @@ public class ClothingManager {
             while (iterator.hasNext()) {
                 ClothingItem item = iterator.next();
                 if (item.getCategory().equalsIgnoreCase(category)) {
+                    iterator.remove();
                     System.out.println("Артикль " + item.getName() + " в категории " + item.getCategory() + "| Размера: " + item.getSize() + "| Цвета: " + item.getColor() + " был найден и успешно удален!");
                     isFound = true;
                 }
