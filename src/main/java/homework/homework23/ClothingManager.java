@@ -259,6 +259,7 @@ public class ClothingManager {
         printArrayList(list);
     }
 
+    //Отсортированный список по категориям
     public void sortedByCategory(){
         ArrayList<ClothingItem> list = new ArrayList<>();
         System.out.println("Отсортированный список по категориям");
