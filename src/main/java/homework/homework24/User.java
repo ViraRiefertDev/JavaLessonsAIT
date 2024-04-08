@@ -153,10 +153,15 @@ public class User {
     public void printAllMassages() {
         System.out.println("-----------------------------");
         System.out.println("Сообщения пользователя" + name);
-        for (Message mes : listMassages) {
-            System.out.println("-----------------------------");
-            System.out.println("Индекс " + listMassages.indexOf(mes));
-            System.out.println(mes);
+        if(listMassages.isEmpty()){
+            System.out.println("У вас пока нет сообщений. Напишите что нибудь:)");
+        }
+        else {
+            for (Message mes : listMassages) {
+                System.out.println("-----------------------------");
+                System.out.println("Индекс " + listMassages.indexOf(mes));
+                System.out.println(mes);
+            }
         }
     }
 
