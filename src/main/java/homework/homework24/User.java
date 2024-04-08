@@ -107,25 +107,29 @@ public class User {
 
     //Метод добавления друзей пользователя-------------------------------------------------------
     public void addNewFriend(User friend) {
-        //Мы не можем без конструктора стоздать юзера, значит объект не может быть пустой, значит проверка на это не нужна?
-        if (friends.isEmpty() || !friends.contains(friend) && friend.getId() != this.getId()) {
-            Boolean isAdded = getFriends().add(friend);
-            if (isAdded) {
-                System.out.println("Пользователь " + friend.getName() + " был добавлен в друзья!");
-            } else {
-                System.out.println("Error, не получилось добавить пользователя " + friend.getName() + " в друзья!");
-            }
-        } else if (friend.getId() == this.getId()) {
-            System.out.println("Вы не можете добавить сами себя в друзья:(");
+        if (friend == null) {
+            System.out.println("Error, не получилось добавить пользователя " + friend.getName() + " в друзья!\nДруг пустой!");
         } else {
-            System.out.println("Данный пользователь уже является вашим другом!");
+            //Мы не можем без конструктора стоздать юзера, значит объект не может быть пустой, значит проверка на это не нужна?
+            if (friends.isEmpty() || !friends.contains(friend) && friend.getId() != this.getId()) {
+                Boolean isAdded = getFriends().add(friend);
+                if (isAdded) {
+                    System.out.println("Пользователь " + friend.getName() + " был добавлен в друзья!");
+                } else {
+                    System.out.println("Error, не получилось добавить пользователя " + friend.getName() + " в друзья!");
+                }
+            } else if (friend.getId() == this.getId()) {
+                System.out.println("Вы не можете добавить сами себя в друзья:(");
+            } else {
+                System.out.println("Данный пользователь уже является вашим другом!");
+            }
         }
+
     }
 
 
     //Метод удаления друзей пользователя----------------------------------------------------
     public void removeFriend(User friend) {
-
         if (!friends.contains(friend)) {
             System.out.println("Данного пользователя нет в списке Ваших друзей!");
         } else {
@@ -173,12 +177,16 @@ public class User {
         }
     }
 
-    //метод добавления пользователя в список пользователей //!!!!!проверить остальные методы
+    //метод добавления пользователя в список пользователей //
     public static void addNewUser(User user) {
-        if (userList.containsKey(user.getId())) {
-            System.out.println("Пользователь с ID:" + user.getId() + " уже есть в списке!");
+        if (user == null) {
+            System.out.println("Объект пустой, а пустого юзера добавить нельзя!");
         } else {
-            userList.put(user.getId(), user);
+            if (userList.containsKey(user.getId())) {
+                System.out.println("Пользователь с ID:" + user.getId() + " уже есть в списке!");
+            } else {
+                userList.put(user.getId(), user);
+            }
         }
     }
 
@@ -193,8 +201,7 @@ public class User {
         }
         if (userArrayList.isEmpty()) {
             System.out.println("Пользователей с таким именем нет в списке");
-        }
-        else{
+        } else {
             System.out.println("Пользователи с таким именем есть в списке ");
         }
         return userArrayList;

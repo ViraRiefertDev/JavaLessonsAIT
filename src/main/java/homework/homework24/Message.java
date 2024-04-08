@@ -93,6 +93,11 @@ public class Message {
 
     //метод лайкнуть сообщение-------------------------------------------------------
     public void likeMassage(User user){
-        likes.add(user);
+        if(user==null){
+            System.out.println("Юзер пустой! Боты сообщения не лайкают!");
+        }
+        else {
+            likes.add(user);
+        }
     }
 }

@@ -90,8 +90,13 @@ public class Community {
 
     //Метод добавление в комьюнити нового учасника----------------------------------
     public static void  addFollowerInCommunity(User user, String communityName){
-              Community community = allCommunities.get(communityName);
-              community.addFollower(user);
+              if(user == null){
+                  System.out.println("Юзер пустой бот! таких в сообщество  не добавляем!");
+              }
+              else {
+                  Community community = allCommunities.get(communityName);
+                  community.addFollower(user);
+              }
     }
     private void addFollower(User user){
         if(followers.contains(user)){
