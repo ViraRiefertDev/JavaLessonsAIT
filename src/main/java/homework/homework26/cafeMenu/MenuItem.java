@@ -19,9 +19,6 @@ public class MenuItem {
 
     @Override
     public String toString() {
-        return "MenuItem{" +
-                "name='" + name + '\'' +
-                ", type=" + type +
-                '}';
+        return "MenuItem: name= " + name + ", type=" + type;
     }
 }

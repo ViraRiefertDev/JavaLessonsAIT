@@ -37,4 +37,14 @@ public enum OrderStatus {
     }
 
     public abstract boolean canCancel();
+
+    boolean canCancelIf(){
+        if(this.equals(PENDING)|| this.equals(PROCESSING)){
+            return true;
+        }
+        else{
+            return false;
+        }
+        //return this.equals(PENDING)|| this.equals(PROCESSING);
+    }
 }
