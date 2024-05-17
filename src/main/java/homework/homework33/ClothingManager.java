@@ -1,6 +1,7 @@
 package homework.homework33;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /*
@@ -23,25 +24,28 @@ public class ClothingManager {
     }
 
     //добавляет одежду в коллекцию
-    public void addClothingItem(ClothingItem item){
+    public void addClothingItem(ClothingItem item) {
         clothingItems.add(item);
     }
 
     //удаляет одежду по названию и возвращает true, если удаление прошло успешно, иначе false
-    public boolean removeClothingItem(String name){
-        for(ClothingItem item:clothingItems){
-            if(item.getName().equals(name)){
-               return clothingItems.remove(item);
+    public boolean removeClothingItem(String name) {
+        Iterator<ClothingItem> iterator = clothingItems.iterator();
+        while (iterator.hasNext()) {
+            ClothingItem item = iterator.next();
+            if (item.getName().equals(name)) {
+                iterator.remove();
+                return true;
             }
         }
         return false;
     }
 
     //возвращает список одежды по указанному типу
-    public List<ClothingItem> findClothingByType(String type){
+    public List<ClothingItem> findClothingByType(String type) {
         List<ClothingItem> findedClothingByType = new ArrayList<>();
-        for(ClothingItem item:clothingItems){
-            if(item.getType().equals(type)){
+        for (ClothingItem item : clothingItems) {
+            if (item.getType().equals(type)) {
                 findedClothingByType.add(item);
             }
         }
@@ -49,10 +53,10 @@ public class ClothingManager {
     }
 
     //возвращает список одежды по указанному размеру
-    public List<ClothingItem> findClothingBySize(String size){
+    public List<ClothingItem> findClothingBySize(String size) {
         List<ClothingItem> findedClothingBySize = new ArrayList<>();
-        for(ClothingItem item:clothingItems){
-            if(item.getSize().equals(size)){
+        for (ClothingItem item : clothingItems) {
+            if (item.getSize().equals(size)) {
                 findedClothingBySize.add(item);
             }
         }
@@ -60,16 +64,20 @@ public class ClothingManager {
     }
 
     //возвращает самый дешевый элемент одежды
-    public ClothingItem findCheapestItem(){
-        double cheapestprice = clothingItems.getFirst().getPrice();
-        ClothingItem cheapestItem = clothingItems.getFirst();
-        for(ClothingItem item: clothingItems){
-            if(item.getPrice()<cheapestprice){
-                cheapestprice = item.getPrice();
-                cheapestItem = item;
+    public ClothingItem findCheapestItem() {
+        if (!clothingItems.isEmpty()) {
+            double cheapestprice = clothingItems.getFirst().getPrice();
+            ClothingItem cheapestItem = clothingItems.getFirst();
+            for (ClothingItem item : clothingItems) {
+                if (item.getPrice() < cheapestprice) {
+                    cheapestprice = item.getPrice();
+                    cheapestItem = item;
+                }
             }
+            return cheapestItem;
         }
-        return cheapestItem;
+        System.out.println("List is Empty");
+        return null;
     }
 
 

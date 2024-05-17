@@ -1,5 +1,6 @@
 package homework.homework33;
 
+import org.hamcrest.core.StringContains;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,6 +8,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -95,6 +98,7 @@ class ClothingManagerTest {
         assertEquals(0, findedItems.size());
         for(ClothingItem item:findedItems){
             assertNotEquals(type, item.getType());
+
         }
     }
 
@@ -125,6 +129,12 @@ class ClothingManagerTest {
         assertEquals(8.5, managerWithElements.findCheapestItem().getPrice());
     }
 
+    @Test
+    void findCheapestItemListIsEmpty(){
+        ClothingManager manager1 = new ClothingManager();
+        assertNull( manager1.findCheapestItem());
+    }
+
     @ParameterizedTest
      @CsvSource({
              "109.95",
@@ -136,7 +146,7 @@ class ClothingManagerTest {
              "149",
             "56.40"
      })
-    void findCheapestItemSuccess(double price) {
+    void findCheapestItemFalse(double price) {
         assertNotEquals(price, managerWithElements.findCheapestItem().getPrice());
     }
 
