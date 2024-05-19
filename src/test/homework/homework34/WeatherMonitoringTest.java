@@ -4,12 +4,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,7 +34,7 @@ class WeatherMonitoringTest {
 
 
     //тест проверяет, что метод возвращает правильную среднюю температуру
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index} ==> AVERAGE_TEMP: {1} - TEMPERATURES: {0}")
     @MethodSource("temperatureProvider")
     void calculateAverageTemperature(List<Double> temperatures,double expectedAverage) {
         double actualAverage = WeatherMonitoring.calculateAverageTemperature(temperatures);
@@ -81,6 +84,21 @@ class WeatherMonitoringTest {
         assertEquals(expected,actual);
     }
 
+    //тот же тест, но используем продвинутую технику с Map
+    @ParameterizedTest
+    @ValueSource(doubles = {1.0,-1.0, 0.0,-10.5, 25.0, -0.1})
+    void checkForFrostWarningsUsing_MAP(double temperature){
+        List<Double> temperatures = List.of(temperature);
+      Map<Double, Boolean> expectedFrostWarning = new HashMap<>();
+      expectedFrostWarning.put(1.0, false);
+      expectedFrostWarning.put(-1.0, true);
+      expectedFrostWarning.put(0.0, false);
+      expectedFrostWarning.put(-10.5, true);
+      expectedFrostWarning.put(25.0, false);
+      expectedFrostWarning.put(-0.1, true);
+      assertEquals(expectedFrostWarning.get(temperature), WeatherMonitoring.checkForFrostWarnings(temperatures));
+    }
+
     //тест проверяет, возвращает ли метод правильных результат для списка из нескольких значений температуры
     @ParameterizedTest
     @CsvSource({
@@ -98,6 +116,13 @@ class WeatherMonitoringTest {
         assertEquals(expected, actual);
     }
 
+    //тот же тест, но используя enum
+    @ParameterizedTest
+    @EnumSource(CheckForFrostWarningValues.class)
+    void CheckForFrostWarningListWithManyValues_ENUM(CheckForFrostWarningValues checkForFrostWarningValues){
+        assertEquals(checkForFrostWarningValues.isExpected(), WeatherMonitoring.checkForFrostWarnings(checkForFrostWarningValues.getTempList()));
+    }
+
     //тест проверяет проверяет, выбрасывается ли исключение IllegalArgumentException, если передан пустой список.
     @Test
     void CheckForFrostWarningsWithEmptyList(){
@@ -112,6 +137,15 @@ class WeatherMonitoringTest {
     void CheckForFrostWarningsWithNull(){
         assertThrows(IllegalArgumentException.class, () -> {
             WeatherMonitoring.checkForFrostWarnings(null);
+        });
+    }
+
+    //тест  на выбрасываемые исключения при помощи enum как источника тестовых данныъ
+    @ParameterizedTest
+    @EnumSource(ExeptionsEnum.class)
+    void CheckForFrostWarningWithIllegalArgumentException (ExeptionsEnum exeptionsEnum){
+        assertThrows(IllegalArgumentException.class, ()->{
+            WeatherMonitoring.checkForFrostWarnings(exeptionsEnum.getTemperatures());
         });
     }
 
@@ -135,22 +169,22 @@ class WeatherMonitoringTest {
         assertEquals(expectedLevel,actualLevel);
     }
 
-    //тест проверяет проверяет, выбрасывается ли исключение IllegalArgumentException, если передан пустой список.
-    @Test
-    void testEvaluatePrecipitationLevelsWithEmptyList(){
-        List<Double> precipitations = new ArrayList<>();
-        assertThrows(IllegalArgumentException.class, () -> {
-            WeatherMonitoring.evaluatePrecipitationLevels(precipitations);
+    //тот же тест, но использую enum
+    @ParameterizedTest
+    @EnumSource(TestEvaluatePrecipitationLevelsValues.class)
+    void testEvaluatePrecipitationLevels_ENUM(TestEvaluatePrecipitationLevelsValues Values){
+        assertEquals(Values.getLevel(),WeatherMonitoring.evaluatePrecipitationLevels(Values.getPrecipitation()));
+    }
+
+    //тест  на выбрасываемые исключения при помощи enum как источника тестовых данных
+    @ParameterizedTest
+    @EnumSource(ExeptionsEnum.class)
+    void testEvaluatePrecipitationLevelsExeption(ExeptionsEnum exeptionsEnum){
+        assertThrows(IllegalArgumentException.class, ()->{
+            WeatherMonitoring.evaluatePrecipitationLevels(exeptionsEnum.getTemperatures());
         });
     }
 
-    //тест проверяет, выбрасывается ли исключение IllegalArgumentException, если передан null.
-    @Test
-    void testEvaluatePrecipitationLevelsWithNull(){
-        assertThrows(IllegalArgumentException.class, () -> {
-            WeatherMonitoring.evaluatePrecipitationLevels(null);
-        });
-    }
 
 
 }
