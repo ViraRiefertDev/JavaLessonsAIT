@@ -11,7 +11,10 @@ public class Zoo {
     private static Map<String,Animal> animalList = new HashMap<>();
 
     public static void addNewAnimalInList(Animal animal){
-        if(animalList.containsKey(animal.getName())){
+        if(animal == null){
+            LOGGER.error("Ошибка при добавлении животного, равно null");
+        }
+        else if(animalList.containsKey(animal.getName())){
             LOGGER.error("Животное с именем {}, уже существует", animal.getName());
         }
         else{
