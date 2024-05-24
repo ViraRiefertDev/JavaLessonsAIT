@@ -24,7 +24,7 @@ public class ErrorCalculator {
         int result = 0;
         try{
             result = a/b;
-            animal.getName();
+            //animal.getName();
 
         }
         //multiple catch
