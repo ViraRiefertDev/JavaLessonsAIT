@@ -33,7 +33,7 @@ public class ErrorCalculator {
 //    }
 
     //Второй вариант, не ждем когда выскочит ошибка/исключение, а сразу выбрасываем на верх ошибку
-    public static int divideNumbers(int a, int b){
+    public static int divideNumbers (int a, int b){
         if(b==0){
             throw new ArithmeticException("Не дели на ноль!!!");
         }
