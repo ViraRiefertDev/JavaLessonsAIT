@@ -1,6 +1,7 @@
-package lessons.lesson33;
+package lesson33;
 
 
+import lessons.lesson33.Palindorm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
