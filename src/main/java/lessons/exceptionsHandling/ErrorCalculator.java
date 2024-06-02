@@ -10,9 +10,13 @@ public class ErrorCalculator {
 
     static Animal animal = null;
     public static void main(String[] args) {
-        divide(10,10);
-       // badMehtod();
-
+        //badMehtod();
+        try {
+           int a = divideNumbers(10, 0);
+        }
+        catch (ArithmeticException exception){
+            LOGGER.error(exception.getMessage());
+        }
 
     }
 
@@ -20,6 +24,22 @@ public class ErrorCalculator {
         LOGGER.info("I'm bad method");
         badMehtod();
     }
+
+    //пробрасываем ошибку наверх
+    //и пусть тот кто вызвал этом метод эту ошибку обрабатывает
+    //если уберем throws ArithmeticException ничего не поменяется, но это как флаг что может вылезти такая ошибка
+//    public static int divideNumbers(int a, int b) throws  ArithmeticException{
+//        return a/b;
+//    }
+
+    //Второй вариант, не ждем когда выскочит ошибка/исключение, а сразу выбрасываем на верх ошибку
+    public static int divideNumbers (int a, int b){
+        if(b==0){
+            throw new ArithmeticException("Не дели на ноль!!!");
+        }
+        return a/b;
+    }
+
     public static void divide(int a, int b){
         int result = 0;
         try{
