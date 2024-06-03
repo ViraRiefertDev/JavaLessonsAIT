@@ -24,7 +24,7 @@ public class Main {
     public static void main(String[] args) {
         NumberChecker numberChecker = new NumberChecker();
         try {
-            numberChecker.checkNumber("12aaa34");
+            numberChecker.checkNumber("123");
         }
         catch (NumberFormatException exception){
             LOGGER.error(exception.getMessage());
