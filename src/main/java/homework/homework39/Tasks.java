@@ -107,6 +107,9 @@ public class Tasks {
     }
 
     public static long differenceDays(LocalDate lastBirthday, LocalDate today) {
+        if(lastBirthday == null||today == null){
+            throw new IllegalArgumentException("Wrong Parameter");
+        }
         long until = lastBirthday.until(today, ChronoUnit.DAYS);
         LOGGER.info("The difference in days between the current date and your last birthday -> {} DAYS", until);
         return until;
