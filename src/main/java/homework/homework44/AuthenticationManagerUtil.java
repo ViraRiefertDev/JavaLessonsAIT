@@ -19,30 +19,18 @@ public class AuthenticationManagerUtil {
         personList = fileManager.ArrayOfStringsInListOfObjects(file);
     }
 
-    //метод идентификации, есть ли такой пользователь в списке
-    public static boolean isRegisteredUser(String userName, String password){
+    //метод проверяет есть ли такой пользователь в списке, если есть возвращает его роль, если нет возвращает NO_ROLE
+    public static UserRole isRegisteredUser(String userName, String password){
         for (User user : personList) {
            if(user.getUserName().equals(userName) && user.getPassword().equals(password)) {
-               return true;
+               return user.getRole();
            }
         }
         LOGGER.error("User is not found or password is wrong");
-        return false;
-
+        return UserRole.NO_ROLE;
     }
 
 
-    //метод который проверяет является ли эта персона user или admin
-    public static boolean isAdmin(String userName, String password){
-        for (User user : personList) {
-            if(user.getUserName().equals(userName) && user.getPassword().equals(password)) {
-                if(user.getRole().equals("admin")){
-                    return true;
-                }
-            }
 
-        }
-        return false;
-    }
 
 }

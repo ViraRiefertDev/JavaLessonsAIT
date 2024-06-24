@@ -15,60 +15,62 @@ public class CountryAppRunner {
         String userName = scanner.next();
         System.out.println("Введите ваш пароль: ");
         String password = scanner.next();
-
-        if (AuthenticationManagerUtil.isRegisteredUser(userName, password)) {
-            if (AuthenticationManagerUtil.isAdmin(userName, password)) {
-                LOGGER.info("The user " + userName + " is logged in as administrator.");
-                boolean isExit = false;
-                while (!isExit) {
-                    System.out.println("1: if you want to view a list of countries enter ");
-                    System.out.println("2: if you want to add a new country to the list");
-                    System.out.println("3: if you want to remove country from the list");
-                    System.out.println("4: if you want to update data of country");
-                    System.out.println("0: if you want to exit");
-                    String answer = scanner.next();
-                    switch (answer) {
-                        case "1":
-                            CountryManagerUtil.getCountries();
-                            break;
-                        case "2":
-                            CountryManagerUtil.addNewCountry(createCountry());
-                            break;
-                        case "3":
-                            System.out.println("Enter the country Name: ");
-                            String countryName = scanner.next();
-                            CountryManagerUtil.deleteCountry(countryName);
-                            break;
-                        case "4":
-                            updateData();
-                            break;
-                        case "0":
-                            isExit = true;
-                            break;
-                        default:
-                            System.out.println("You entered something wrong!");
-                    }
+        UserRole userRole = AuthenticationManagerUtil.isRegisteredUser(userName, password);
+        if (userRole.equals(UserRole.ADMIN)) {
+            LOGGER.info("The user " + userName + " is logged in as administrator.");
+            boolean isExit = false;
+            while (!isExit) {
+                System.out.println("1: if you want to view a list of countries enter ");
+                System.out.println("2: if you want to add a new country to the list");
+                System.out.println("3: if you want to remove country from the list");
+                System.out.println("4: if you want to update data of country");
+                System.out.println("0: if you want to exit");
+                String answer = scanner.next().trim();
+                switch (answer) {
+                    case "1":
+                        CountryManagerUtil.getCountries();
+                        break;
+                    case "2":
+                        CountryManagerUtil.addNewCountry(createCountry());
+                        break;
+                    case "3":
+                        System.out.println("Enter the country Name: ");
+                        String countryName = scanner.next();
+                        CountryManagerUtil.deleteCountry(countryName);
+                        break;
+                    case "4":
+                        updateData();
+                        break;
+                    case "0":
+                        isExit = true;
+                        break;
+                    default:
+                        System.out.println("You entered something wrong!");
                 }
-            } else {
-                boolean isExit = false;
-                LOGGER.info("The user " + userName + " is logged in as user.");
-                while (!isExit) {
-                    System.out.println("1: if you want to view a list of countries enter ");
-                    System.out.println("0: if you want to exit");
-                    String answer = scanner.next();
-                    switch (answer) {
-                        case "1":
-                            CountryManagerUtil.getCountries();
-                            break;
-                        case "0":
-                            isExit = true;
-                            break;
-                        default:
-                            System.out.println("You entered something wrong!");
-                    }
+            }
+        } else if (userRole.equals(UserRole.USER)){
+            boolean isExit = false;
+            LOGGER.info("The user " + userName + " is logged in as user.");
+            while (!isExit) {
+                System.out.println("1: if you want to view a list of countries enter ");
+                System.out.println("0: if you want to exit");
+                String answer = scanner.next();
+                switch (answer) {
+                    case "1":
+                        CountryManagerUtil.getCountries();
+                        break;
+                    case "0":
+                        isExit = true;
+                        break;
+                    default:
+                        System.out.println("You entered something wrong!");
                 }
             }
         }
+        else{
+            LOGGER.error("You are not a registered user, login denied!");
+        }
+
     }
 
 

@@ -38,7 +38,13 @@ public class FileManager<T> {
                 if (type.equals(Country.class)) {
                     listOfObjects.add((T) new Country(dataArray[0], dataArray[1], Integer.parseInt(dataArray[2]), Integer.parseInt(dataArray[3])));
                 } else if (type.equals(User.class)) {
-                    listOfObjects.add((T) new User(dataArray[0], dataArray[1], dataArray[2]));
+                    UserRole role;
+                    if(dataArray[2].equalsIgnoreCase("admin")){
+                        role = UserRole.ADMIN;
+                    }else{
+                        role = UserRole.USER;
+                    }
+                    listOfObjects.add((T) new User(dataArray[0], dataArray[1], role));
                 } else {
                     System.out.println("No such type exist!");
                 }
@@ -71,18 +77,19 @@ public class FileManager<T> {
                 User user = (User) t;
                 data = user.getUserName() + "," + user.getPassword() + "," + user.getRole();
             }
-                try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, append))) {
-                    append = true;
-                    bufferedWriter.write(data);
-                    bufferedWriter.newLine();
-                } catch (FileNotFoundException exception) {
-                    LOGGER.error(exception.getMessage());
+            try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, append))) {
+                append = true;
+                bufferedWriter.write(data);
+                bufferedWriter.newLine();
+            } catch (FileNotFoundException exception) {
+                LOGGER.error(exception.getMessage());
 
-                } catch (IOException exception) {
+            } catch (IOException exception) {
                 LOGGER.error(exception.getMessage());
             }
 
         }
+
     }
 
 }
