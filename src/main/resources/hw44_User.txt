@@ -1,0 +1,7 @@
+admin_john,admiN1!2#,admin
+admin_jane,aDmiN2@3$,admin
+mike23,usEr1#2$,user
+saraPuffer,uSer2@3&,user
+alexBolduin,usEr3!4%,user
+emma13,usEr4^5&,user
+liam_offer,usEr5*6#,user
