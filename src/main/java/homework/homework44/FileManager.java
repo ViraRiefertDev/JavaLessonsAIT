@@ -67,27 +67,33 @@ public class FileManager<T> {
 
     public void ListOfObjectsInArrayOfStringsAndSafeInFile(List<T> listOfObjectsToSafe, File file) {
         //append чтобы очистить файл от старых записей, потом изменяется на true
-        boolean append = false;
-        for (T t : listOfObjectsToSafe) {
-            String data = "";
-            if (type.equals(Country.class)) {
-                Country country = (Country) t;
-                data = country.getCountryName() + "," + country.getCapital() + "," + country.getPopulation() + "," + country.getPopulation();
-            } else if (type.equals(User.class)) {
-                User user = (User) t;
-                data = user.getUserName() + "," + user.getPassword() + "," + user.getRole();
+        try{
+            if(file.exists()){
+                file.delete();
             }
-            try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, append))) {
-                append = true;
+            file.createNewFile();
+        }catch (IOException exception){
+            LOGGER.error(exception.getMessage());
+        }
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true))) {
+            for (T object : listOfObjectsToSafe) {
+                String data = "";
+                if (type.equals(Country.class)) {
+                    Country country = (Country) object;
+                    data = country.getCountryName() + "," + country.getCapital() + "," + country.getPopulation() + "," + country.getPopulation();
+                } else if (type.equals(User.class)) {
+                    User user = (User) object;
+                    data = user.getUserName() + "," + user.getPassword() + "," + user.getRole();
+                }
                 bufferedWriter.write(data);
                 bufferedWriter.newLine();
-            } catch (FileNotFoundException exception) {
-                LOGGER.error(exception.getMessage());
 
-            } catch (IOException exception) {
-                LOGGER.error(exception.getMessage());
+
             }
-
+        } catch (FileNotFoundException e) {
+            LOGGER.error("File not found: " + e.getMessage());
+        } catch (IOException e) {
+            LOGGER.error("Error writing to file: " + e.getMessage());
         }
 
     }
